@@ -1,0 +1,29 @@
+<html>
+<head>
+    <title>Schedule It!</title>
+</head>
+<body>
+    <div class="container-narrow">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div style="background:red; border:5px solid red;" class="flashes">
+                    {% for message in messages %}
+                        <b>{{ message }}</b>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        <div class="masthead">
+            <h1>Schedule It!</h1>
+            <p><b>Find free blocks of time on your Google Calendar</b></p>
+        </div>
+        <hr>
+        {% block content %}
+        {% endblock %}
+        <hr>
+        <div class="footer">
+          
+        </div>
+    </div>
+</body>
+</html>
