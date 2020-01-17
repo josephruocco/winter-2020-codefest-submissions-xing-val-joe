@@ -6,7 +6,7 @@ import requests
 import os
 
 from flask import Flask, request, render_template, session, url_for, redirect, flash, send_from_directory
-from rfc3339 import rfc3339  # small library to format dates to rfc3339 strings (format for Google Calendar API requests)
+from rfc3339 import rfc3339
 from flask_oauth import OAuth
 from dateutil import parser
 
