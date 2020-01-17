@@ -76,7 +76,7 @@ def search():
     response = res.read()
     # turn the response into a JSON object
     # pull out the 'items', which is an array of calendar id's
-    calendar_list = json.loads(response)['items']
+    calendar_list = json.loads(response.decode('utf-8'))['items']
     # send the list of calendar id's to the search  form
     return render_template('search.html', calendar_list=calendar_list)
 
@@ -98,7 +98,7 @@ def authorized(resp):
     # will return user to the welcome page and flash an error message
     if resp is None:
         flash('Whoops, you denied us access to your Google Calendar. We can not help you schedule without access! Please sign in again.')
-        return redirect(url_for('login'))
+        return redirect(url_for('welcome'))
     access_token = resp['access_token']
     # store the access token in the session
     session['access_token'] = access_token, ''
@@ -162,9 +162,9 @@ def generate_date_list(startdate, enddate, starttime, endtime, calendarid):
             res = urllib.request.urlopen(req)
         except (urllib.error.URLError,) as e:
                 session.pop('access_token', None)
-                return redirect(url_for('login'))
+                return redirect(url_for('welcome'))
         response = res.read()
-        event_list = json.loads(response)['items']
+        event_list = json.loads(response.decode('utf-8'))['items']
         # if there are no events given back, then that time is empty
         # add date to the suggested free time list
         if not event_list:
@@ -220,12 +220,7 @@ def schedule_event():
     start_formatted = start_datetime.strftime("%-I:%M%p")
     end_datetime = datetime.datetime.strptime(apptEndTime, '%H:%M%p').time()
     end_formatted = end_datetime.strftime("%-I:%M%p")
-    # data = {
-    #     'text': apptName + " at " + apptLocation + " on " + apptDate + " " + start_formatted + "-" + end_formatted,
-    #     'key': GOOGLE_API_KEY
-    # }
-    # data_encoded = urllib.urlencode(data)
-    # convert datetime into rfc3339 format for Google API
+
     apptDateObject = datetime.datetime.strptime(apptDate, '%m/%d/%Y').date()
     apptStartTimeObject = datetime.datetime.strptime(apptStartTime, '%I:%M%p').time()
     apptEndTimeObject = datetime.datetime.strptime(apptEndTime, '%I:%M%p').time()
@@ -268,24 +263,7 @@ def schedule_event():
     # json.dumps turns a list into a string (don't need to url encode this request)
     r = requests.post(full_url, data=json.dumps(event), headers=headers)
     print(r)
-    # r = requests.post(full_url, headers=headers)
-    # data = urllib.urlencode(event)
-    # req = urllib2.Request(full_url, data, headers)
-    # try:
-        # open a url, which can either be a string or Request object
-        # urllib2.urlopen(url, data)
-        # res = urllib2.urlopen(req)
-        # print res
-    # except (urllib2.URLError,), e:
-        # if e.code == 401 or e.code == 403:
-            # Unauthorized - bad token
-            # delete token from session and redirect user to log in with google
-            # session.pop('access_token', None)
-            # return redirect(url_for('login'))
-        # return the error code
-        # return str(e.code)
-    # returns a string of the http response (schedule event details)
-    # response = res.read()
+  
     response = r.text
     print(response)
     # turn the response into a JSON object
