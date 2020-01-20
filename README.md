@@ -5,7 +5,7 @@
 ### Team members (format: GitHub username, last name, first name):
 -  josephruocco, Ruocco, Joseph
 -  Shi, Xing Tao
--  Shidlovskiy, Valentine
+-  Valentine-S, Shidlovskiy, Valentine
 
 ### Group info (check all that apply - add an X in the [ ])
 - [ ] We are a CUNY2X bootcamp cohort team
