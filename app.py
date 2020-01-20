@@ -72,7 +72,7 @@ def search():
         res = urllib.request.urlopen(req)
     except (urllib.error.URLError,) as e:
             session.pop('access_token', None)
-            return redirect(url_for('welcome'))
+            return redirect(url_for('login'))
     response = res.read()
     # turn the response into a JSON object
     # pull out the 'items', which is an array of calendar id's
@@ -162,7 +162,7 @@ def generate_date_list(startdate, enddate, starttime, endtime, calendarid):
             res = urllib.request.urlopen(req)
         except (urllib.error.URLError,) as e:
                 session.pop('access_token', None)
-                return redirect(url_for('welcome'))
+                return redirect(url_for('login'))
         response = res.read()
         event_list = json.loads(response.decode('utf-8'))['items']
         # if there are no events given back, then that time is empty

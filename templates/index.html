@@ -1,7 +1,44 @@
 {% extends "layout.html" %}
 {% block content %}
-    <div class="jumbotron">
-        <p class="lead">Welcome! To get started, please sign with in to your Google Calendar.</p>
-        <form action="/search"><input class="btn btn-large btn-primary" type="submit" value="Sign In"></form>
-    </div>
+
+
+   <figure class="aside">
+      <div class="module">
+        <header>
+          <h4>Project info</h4>
+        </header>
+        <ul>
+          <li>Type: Student project for Hunter Codefest</li>
+          <li>Duration: 4 weeks</li>
+          <li>Team: Xing Tao, Val S, Joe R</li>
+        </ul>
+      </div>
+    </figure>
+        <figure class="aside three">
+      <div class="module three">
+        <header>
+          <h4>Tools Used</h4>
+        </header>
+        <ul>
+          <li>Flask</li>
+          <li>Google API</li>
+          <li>Python 3</li>
+          <li>Digital Ocean</li>
+          <li>Gunicorn</li>
+          <li>FreeDNS</li>
+        </ul>
+      </div>
+    </figure>
+   
+
+	<h2>Weclome</h2>
+
+	  <p class="lead">Welcome! To get started, please sign with in to your Google Calendar.</p>
+	<form action="/search"><input type="submit" value="Sign In"></form>
+    <h2>Overview</h2>
+    <p>This is a simple web app that integrates with google calendar. You can use it to show you blocks of free time and schedule appointments. </p>
+    <dl>
+      <dt>Team</dt>
+      <dd>Joe R, Xing Tao S, Val S</dd>
+    </dl>
 {% endblock %}
