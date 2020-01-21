@@ -12,6 +12,6 @@
 - [X] We are a Daedalus / Google Mentored group
 - [ ] We are a beginner group (only completed CSCI 12700)
 - [X] We plan to attend the final event on 1/31 at Google (time TBD)
-- As attendance is highly important, if you checked the above box but only some members will be attending, please indicate the number here: ___
+- As attendance is highly important, if you checked the above box but only some members will be attending, please indicate the number here: 3?
 
 ### all the other stuff you can find in someone else's repo
