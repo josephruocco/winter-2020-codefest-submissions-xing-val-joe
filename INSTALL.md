@@ -52,7 +52,9 @@ To run the application, simply start the server using:
 $ python app.py
 ```
 
-### Troubleshooting
+### Troubleshooting and NOTES
+- THIS PROGRAM DOES NOT WORK ON MACoS. USE AN UBUNTU LINUX MACHINE FOR TESTING (until further notice)
+now for some notes
 - python app.py runs at https://localhost:5000/
 - rfc3339  is a small library to format dates to rfc3339 strings (format for Google Calendar API requests), 
 - flask-oauth is used in place of the old lib on pypi.
