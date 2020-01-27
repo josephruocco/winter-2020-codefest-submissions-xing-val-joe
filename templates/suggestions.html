@@ -4,29 +4,52 @@
     <p>Sorry, we couldn't find an open block at the time requested! :(</p>
     <input type="button" onclick="history.back();" value="Try Again">
     {% else %}
-    <form action="/schedule_event" method="POST" id="scheduleEventForm">
-        <fieldset>
-            <input id="apptCalendarId" name="apptCalendarId" type="hidden" value="{{ calendarid }}"></input>
 
-            <label><b>Some available times on the calendar {{ calendarid }} (choose one to schedule):</b></label>
+      <figure class="aside">
+      <div class="module">
+        <header>
+          <h4>Helpful Tips</h4>
+        </header>
+        <ul>
+          <li>Double check to make sure your start date is before your end date!</li>
+          <li>share this tool with your friends to schedule group meetups with ease!</li>
+        </ul>
+      </div>
+      </figure>
+      
+    
+    <form action="/schedule_event" method="POST" id="scheduleEventForm">
+        <div>
+            <input id="apptCalendarId" name="apptCalendarId" type="hidden" value="{{ calendarid }}"></input>
+	    <section id="available">
+	    <div>
+              <label><b>Some available times on the calendar {{ calendarid }} (choose one to schedule):</b></label>
+	    </div>
+	    
             <select name="apptOptions" class="select-block span5">
                 {% for date in free_dates %}
                 <option value="{{ date }} {{ starttime }} {{ endtime }} {{ timezone }}">{{ date }} from {{ starttime }} to {{ endtime }}</option>
                 {% endfor %}
             </select>
-            
-            <label>Appointment Name:</label>
-            <input id="apptName" name="apptName" type="text"></input>
 
+	</div>
+	</section>
+
+	<section id="apptNameLoc">
+           <div> <label>Appointment Name:</label>
+            <input id="apptName" name="apptName" type="text">
+</div>
+    <div>
             <label>Appointment Location:</label>
-            <input id="apptLocation" name="apptLocation" type="text"></input>
-            <br>
-            <button id="submitNewAppt" type="submit" class="btn btn-large btn-primary">Schedule Appointment!</button>
-        </fieldset>
+            <input id="apptLocation" name="apptLocation" type="text">
+        </div>  
+            <div><button id="submitNewAppt" type="submit" class="btn btn-large btn-primary">Schedule Appointment!</button>
+    </div>
+	   
+	      </div>
     </form>
-    <p align="right">
-        I'm done!
+  
         <form align="right" action="/logout"><input class="btn" type="submit" value="Log me out."></form>
-    </p>
+
     {% endif %}
 {% endblock %}
