@@ -1,6 +1,6 @@
 ## Schedule It!
 
-The Scheduler  is a Python Flask application to scan your google calendars, find chunks
+Schedule IT! is a Python Flask application to scan your google calendars, find chunks
 of free time, and allow you to schedule events in those times.
 
 ## Use a virtual environment
